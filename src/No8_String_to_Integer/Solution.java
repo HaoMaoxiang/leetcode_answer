@@ -1,5 +1,8 @@
 package No8_String_to_Integer;
 
+/**
+ * Implement atoi to convert a string to an integer.
+ */
 public class Solution {
 
     public int myAtoi(String str) {

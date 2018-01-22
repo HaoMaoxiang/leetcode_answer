@@ -8,7 +8,6 @@ package No58_Length_of_Last_Word;
  * Note: A word is defined as a character sequence consists of non-space characters only.
  * <p>
  * Example:
- * <p>
  * Input: "Hello World"
  * Output: 5
  */

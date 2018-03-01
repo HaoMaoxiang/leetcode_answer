@@ -1,5 +1,7 @@
 package No111_Minimum_Depth_of_Binary_Tree;
 
+import BasicDataStruct.TreeNode;
+
 /**
  * Given a binary tree, find its minimum depth.
  * <p>

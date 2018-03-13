@@ -8,6 +8,16 @@ public class ListNode {
         val = x;
     }
 
+    public static ListNode create(int[] nums) {
+        ListNode head = new ListNode(-1);
+        ListNode node = head;
+        for (int num : nums) {
+            node.next = new ListNode(num);
+            node = node.next;
+        }
+        return head.next;
+    }
+
     public static String toString(ListNode head) {
         StringBuilder builder = new StringBuilder();
         while (head != null) {

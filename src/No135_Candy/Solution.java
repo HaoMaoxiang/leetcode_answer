@@ -13,46 +13,32 @@ import java.util.Arrays;
  */
 public class Solution {
 
-    /*
-     * 超时
-     */
     public int candy(int[] ratings) {
-        int candy = 0;
+        int res = 0;
         if (ratings == null || ratings.length == 0) {
-            return candy;
+            return res;
         }
-        int flag = 0;
         int[] candies = new int[ratings.length];
+
+        // 从左向右扫描一遍
         candies[0] = 1;
-        candy = 1;
-        for (int i = 1; i < ratings.length; i++) {
-            if (i < ratings.length - 1 && ratings[i] >= ratings[i - 1] && ratings[i] >= ratings[i + 1]) {
-                flag = i;
-            }
+        for (int i = 1; i < candies.length; i++) {
             if (ratings[i] > ratings[i - 1]) {
-                candy = candy + candies[i - 1] + 1;
                 candies[i] = candies[i - 1] + 1;
-            } else if (ratings[i] < ratings[i - 1]) {
-                if (candies[i - 1] > 1) {
-                    candy = candy + 1;
-                } else {
-                    for (int j = flag + 1; j <= i; j++) {
-                        candy += 1;
-                        candies[j] += 1;
-                    }
-                }
-                candies[i] = 1;
             } else {
-                candy = candy + 1;
                 candies[i] = 1;
             }
-            if (candies[flag] == candies[flag + 1] && ratings[flag] != ratings[flag + 1]) {
-                candies[flag] += 1;
-                candy += 1;
-            }
-            System.out.println("flag:" + flag + ", candy:" + candy + "\n candies:" + Arrays.toString(candies) + "\n");
         }
-        return candy;
+
+        // 从右向左扫描一遍
+        res += candies[candies.length - 1];
+        for (int i = candies.length - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1] && candies[i] <= candies[i + 1]) {
+                candies[i] = candies[i + 1] + 1;
+            }
+            res += candies[i];
+        }
+        return res;
     }
 
 
